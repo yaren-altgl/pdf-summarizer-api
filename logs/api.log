@@ -1,0 +1,187 @@
+2025-04-17 21:20:36.908 | INFO     | main:upload_pdf:61 - Yeni istek alındı. Dosya: ornek_yapay_zeka_makalesi.pdf, Dil tercihi: auto
+2025-04-17 21:20:36.911 | INFO     | main:upload_pdf:69 - PDF'ten metin çıkarıldı.
+2025-04-17 21:20:36.912 | WARNING  | main:upload_pdf:72 - PDF'den çıkarılan metin yetersiz.
+2025-04-17 21:20:36.913 | ERROR    | main:upload_pdf:99 - Bilinmeyen bir sunucu hatası.
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\hp\anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 328
+               │     └ 3
+               └ <function _main at 0x000001FB7AF2DBC0>
+  File "C:\Users\hp\anaconda3\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 328
+           │    └ <function BaseProcess._bootstrap at 0x000001FB7AE262A0>
+           └ <SpawnProcess name='SpawnProcess-1' parent=17092 started>
+  File "C:\Users\hp\anaconda3\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000001FB7AE25800>
+    └ <SpawnProcess name='SpawnProcess-1' parent=17092 started>
+  File "C:\Users\hp\anaconda3\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000001FB7AEDF650>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-1' parent=17092 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-1' parent=17092 started>
+    │    └ <function subprocess_started at 0x000001FB7D32A7A0>
+    └ <SpawnProcess name='SpawnProcess-1' parent=17092 started>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=692, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000001FB7D34D070>>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\uvicorn\server.py", line 66, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=692, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000001FB7D329D00>
+           │       │   └ <uvicorn.server.Server object at 0x000001FB7D34D070>
+           │       └ <function run at 0x000001FB7AF2E980>
+           └ <module 'asyncio' from 'C:\\Users\\hp\\anaconda3\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\hp\anaconda3\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001FB7D370120>
+           │      └ <function Runner.run at 0x000001FB7CBA8A40>
+           └ <asyncio.runners.Runner object at 0x000001FB7AEDC170>
+  File "C:\Users\hp\anaconda3\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\uvi...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001FB7CBA2660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001FB7AEDC170>
+  File "C:\Users\hp\anaconda3\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001FB7CBA25C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\hp\anaconda3\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001FB7CBA8400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\hp\anaconda3\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001FB7CAC6980>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\hp\anaconda3\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000001FB7D27E450>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C583B0>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000001FB7AEDFA40>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000001FB7D27E450>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C583B0>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C583B0>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001FB00C42120>
+          └ <fastapi.applications.FastAPI object at 0x000001FB7AEDFA40>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001FB00C4E8E0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000001FB00C41EB0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001FB00C42120>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '1656', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001FB00C4E8E0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x000001FB7E564AE0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000001FB00C41EB0>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000001FB00C41EB0...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001FB00C41C40>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000001FB00C41EB0>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000001FB00C41EB0...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001FB00C43410>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000001FB0095A780>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001FB00C41C40>
+          └ <function wrap_app_handling_exceptions at 0x000001FB7E4A71A0>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FB00C4EDE0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000001FB0095A780>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FB00C4EDE0>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001FB0095A780>>
+          └ <fastapi.routing.APIRouter object at 0x000001FB0095A780>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FB00C4EDE0>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x000001FB7E4D47C0>
+          └ APIRoute(path='/upload-pdf/', name='upload_pdf', methods=['POST'])
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FB00C4EDE0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001FB00C4E980>
+          └ APIRoute(path='/upload-pdf/', name='upload_pdf', methods=['POST'])
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FB00C4EDE0>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001FB00C43470>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001FB00C4ECA0>
+          └ <function wrap_app_handling_exceptions at 0x000001FB7E4A71A0>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FB00C4EE80>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x000001FB00C58...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001FB00C4ECA0>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001FB00C43470>
+                     └ <function get_request_handler.<locals>.app at 0x000001FB00C4EA20>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001FB7E4A6A20>
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'file': UploadFile(filename='ornek_yapay_zeka_makalesi.pdf', size=1341, headers=Headers({'content-disposition': 'form-data; ...
+                 │         └ <function upload_pdf at 0x000001FB00C4E840>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=File(Pydant...
+
+> File "C:\Users\hp\Desktop\pdf-summarizer-api\main.py", line 73, in upload_pdf
+    return insufficient_text()
+           └ <function insufficient_text at 0x000001FB00BFA160>
+
+  File "C:\Users\hp\Desktop\pdf-summarizer-api\error_handlers.py", line 9, in insufficient_text
+    raise HTTPException(status_code=422, detail="PDF'den yeterli metin çıkarılamadı.")
+          └ <class 'fastapi.exceptions.HTTPException'>
+
+fastapi.exceptions.HTTPException: 422: PDF'den yeterli metin çıkarılamadı.
