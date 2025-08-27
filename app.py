@@ -1,14 +1,28 @@
+# app.py
+import os
+from dotenv import load_dotenv
 import gradio as gr
-from main import extract_text_from_pdf, summarize_text, model
-from language_utils import detect_language
+import google.generativeai as genai
+
+from pdf_utils import extract_text_from_pdf
+from summarizer import summarize_text
+
+# .env oku ve ENV'yi belirle
+load_dotenv()
+env = os.getenv("ENV", "dev")  # dev / prod
+
+# Gemini yapılandır
+genai.configure(api_key=os.getenv("keyim"))  # istersen GOOGLE_API_KEY'e geçir
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 def summarize_pdf_with_preview(file, summary_lang_label):
+    # PDF metnini al
     text = extract_text_from_pdf(file)
 
-    if len(text) < 20:
+    if not text or len(text.strip()) < 20:
         return "PDF'den yeterli metin çıkarılamadı.", ""
 
-    # Dil kodunu belirle
+    # Dil seçimi
     lang_map = {
         "Otomatik (PDF dili neyse)": "auto",
         "Türkçe (Her durumda Türkçe özetle)": "tr",
@@ -19,10 +33,10 @@ def summarize_pdf_with_preview(file, summary_lang_label):
     # Özetle
     summary = summarize_text(text, model, selected_lang)
 
-    # 2 çıktı: metnin tamamı (ön izleme) ve özet
-    return text[:3000], summary  # metni kesip gösteriyoruz
+    # Ön izleme (ilk 3000 karakter)
+    return text[:3000], summary
 
-# Arayüz
+# Gradio arayüzü
 iface = gr.Interface(
     fn=summarize_pdf_with_preview,
     inputs=[
@@ -45,4 +59,11 @@ iface = gr.Interface(
     description="PDF içeriğini ön izle, özet dilini seç, 3-5 cümlede özet al!"
 )
 
-iface.launch(server_name="0.0.0.0", server_port=7860, share=True)
+# ENV'ye göre public link
+share_flag = (env == "dev")
+
+iface.launch(
+    server_name="0.0.0.0",
+    server_port=7860,
+    share=share_flag
+)

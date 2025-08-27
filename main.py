@@ -31,10 +31,7 @@ env = os.getenv("ENV", "dev")  # varsayılan olarak 'dev'
 if env == "dev":
     origins = ["*"]
 else:
-    origins = [
-        "https://benimsitem.com",
-        "https://portfolio-sitesi.com"
-    ]
+    origins = ["*"]
 
 # CORS middleware'i ekle
 app.add_middleware(
@@ -47,7 +44,7 @@ app.add_middleware(
 
 # Gemini API yapılandırması
 genai.configure(api_key=os.getenv("keyim"))
-model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Ana sayfa
 @app.get("/")

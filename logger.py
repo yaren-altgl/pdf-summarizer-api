@@ -1,8 +1,10 @@
-# logger.py
+import os
 from loguru import logger
+import sys
 
-# Log dosyasına yazmak istersen:
-logger.add("logs/api.log", rotation="1 MB", retention="10 days", compression="zip")
+env = os.getenv("ENV", "dev")
 
-# İstersen sadece terminale yazsın:
-# logger.add(sys.stderr, level="INFO")
+if env == "dev":
+    logger.add(sys.stderr, level="DEBUG")
+else:
+    logger.add("logs/api.log", rotation="1 MB", retention="10 days", compression="zip", level="INFO")

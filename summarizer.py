@@ -17,11 +17,18 @@ def summarize_text(text, model, language="auto"):
                 f'"""\n{content}\n"""'
             )
 
+    def safe_generate(prompt):
+        """Model çağrısını güvenli yap, hata olursa açıklama döndür."""
+        try:
+            response = model.generate_content(prompt)
+            return response.text.strip()
+        except Exception as e:
+            return f"⚠️ Özetleme sırasında hata oluştu: {str(e)}"
+
     # 3000 karakterden kısa metinleri doğrudan özetle
     if len(text) <= 3000:
         prompt = create_structured_prompt(text, language)
-        response = model.generate_content(prompt)
-        return response.text.strip()
+        return safe_generate(prompt)
     
     # Uzun metinleri parçalara ayırarak özetle
     chunks = [text[i:i+3000] for i in range(0, len(text), 3000)]
@@ -29,13 +36,9 @@ def summarize_text(text, model, language="auto"):
 
     for chunk in chunks:
         prompt = create_structured_prompt(chunk, language)
-        response = model.generate_content(prompt)
-        partial_summaries.append(response.text.strip())
+        partial_summaries.append(safe_generate(prompt))
 
     # Tüm özetleri birleştirip yeniden özet al
     combined_summary = "\n".join(partial_summaries)
     final_prompt = create_structured_prompt(combined_summary, language)
-    final_response = model.generate_content(final_prompt)
-    return final_response.text.strip()
-
-
+    return safe_generate(final_prompt)

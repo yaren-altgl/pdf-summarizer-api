@@ -1,6 +1,16 @@
 # error_handlers.py
 
+import os
 from fastapi import HTTPException
+
+env = os.getenv("ENV", "dev")
+
+def unknown_error(e):
+    if env == "dev":
+        raise HTTPException(status_code=500, detail=f"Sunucu hatası (debug): {str(e)}")
+    else:
+        raise HTTPException(status_code=500, detail="Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.")
+
 
 def invalid_file_type():
     raise HTTPException(status_code=400, detail="Lütfen geçerli bir PDF dosyası yükleyin.")
